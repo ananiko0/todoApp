@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, useLocation } from "react-router-dom";
+
+import Welcome from "./pages/Welcome";
+import Main from "./pages/Main";
+import "./App.css";
+import SideBar from "./components/sidebar/SideBar";
 
 function App() {
+  const location = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={"App"}>
+      <SideBar />
+      <main>
+        <Routes location={location} key={location.pathname}>
+          <Route element={<Welcome />} path="/welcome" />
+          <Route element={<Main />} path="/" />
+        </Routes>
+      </main>
     </div>
   );
 }

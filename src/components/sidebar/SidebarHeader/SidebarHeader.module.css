@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.button {
+  margin: 10px 0;
+}
+
+@media (min-width: 885px) {
+  .container {
+    margin: 10px;
+  }
+}

@@ -1,0 +1,36 @@
+.container {
+  position: fixed;
+  width: 90%;
+  height: 100vh;
+  z-index: 199;
+  padding: 0px 21px;
+  background-color: var(--background-color-600);
+}
+
+.undisplayed {
+  position: fixed;
+  width: 100%;
+  padding: 0px 10px;
+  background-color: var(--background-color-500);
+}
+
+.undisplayed h3 {
+  display: none;
+}
+
+@media (min-width: 885px) {
+  .container {
+    width: 24%;
+    height: 95vh;
+    margin: 20px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .undisplayed {
+    position: relative;
+    width: auto;
+    margin: 20px;
+    background-color: var(--background-color-500);
+  }
+}
