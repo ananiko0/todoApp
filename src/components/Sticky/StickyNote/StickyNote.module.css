@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 0px;
+  background-color: var(--pink);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 275px;
+}
+
+@media (min-width: 503px) {
+  .container {
+    width: 35%;
+  }
+}
+
+@media (min-width: 730px) {
+  .container {
+    width: 40%;
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    width: 25%;
+  }
+}

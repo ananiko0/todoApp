@@ -13,15 +13,22 @@ body {
 * {
   --background-color-500: rgb(251, 251, 251);
   --background-color-600: rgb(244, 241, 241);
+  --background-color-700: rgb(226 226 226);
   --secondary-color-200: rgb(85, 163, 189);
   --yellow: rgb(241, 211, 101);
   --pink: rgb(252 157 157);
   --blue: rgb(91, 191, 222);
-  --green: rgb(113, 197, 123);
+  --green: rgb(145, 224, 154);
   --lila: rgb(166, 91, 204);
+  --text-color-700: rgb(29, 29, 29);
   --text-color-600: rgb(66, 66, 66);
   --text-color-500: rgba(73, 73, 74, 0.905);
   --border-color-300: rgba(148, 147, 147, 0.402);
+}
+h2 {
+  color: var(--text-color-700);
+  margin: 10px 0;
+  letter-spacing: 2px;
 }
 
 h3 {
@@ -45,6 +52,7 @@ h6 {
 button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 ul {

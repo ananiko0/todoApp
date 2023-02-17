@@ -1,14 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import classes from "./ListItem.module.css";
-function ListItem({ text, icon, number }) {
+function ListItem({ text, icon, number, path }) {
   return (
     <li>
-      <Link className={classes.listItem}>
+      <NavLink
+        className={(navData) =>
+          navData.isActive ? classes.active : classes.listItem
+        }
+        to={path}
+      >
         <div className={classes.icon}>{icon}</div>
         <h6>{text}</h6>
-      </Link>
+      </NavLink>
     </li>
   );
 }
