@@ -11,10 +11,10 @@ function Sticky(props) {
     <Fragment>
       <h2>Sticky Wall</h2>
       <div className={classes.container}>
-        <StickyNote title={"Social"} text={text} />
-        <StickyNote title={"Social"} text={text} />
-        <StickyNote title={"Social"} text={text} />
-        <StickyNote title={"Social"} text={text} />
+        <StickyNote title={"Social"} text={text} color="#fdf2b3" />
+        <StickyNote title={"Social"} text={text} color="rgb(252 157 157)" />
+        <StickyNote title={"Social"} text={text} color="rgb(91, 191, 222)" />
+        <StickyNote title={"Social"} text={text} color="rgb(145, 224, 154)" />
       </div>
     </Fragment>
   );
