@@ -1,5 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+import { AiOutlineClose } from "react-icons/ai";
 
+import Container from "./components/UI/Container/Container";
 import Welcome from "./pages/Welcome";
 import Main from "./pages/Main";
 import StickyWall from "./pages/StickyWall";
@@ -9,7 +11,7 @@ import "./App.css";
 function App() {
   const location = useLocation();
   return (
-    <div className={"App"}>
+    <div className={"App"} id="App">
       <SideBar />
       <main>
         <Routes location={location} key={location.pathname}>

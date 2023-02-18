@@ -1,32 +1,34 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { HiOutlineMenu } from "react-icons/hi";
 
-import SidebarHeader from "./SidebarHeader/SidebarHeader";
+import useSlider from "../../hooks/useSlider";
+import Container from "../UI/Container/Container";
 import Tasks from "./Tasks/Tasks";
 import Lists from "./Lists/Lists";
 import Actions from "./Actions/Actions";
 import classes from "./SideBar.module.css";
-import useBoolean from "../../hooks/useBoolean";
 
 function SideBar(props) {
-  const { boolean, toggle } = useBoolean(false);
-
-  const toggleHandler = () => {
-    if (window.innerWidth < 885) {
-      if (!boolean) document.body.style.overflow = "hidden";
-      if (boolean) document.body.style.overflow = "unset";
-    }
-    toggle();
-  };
+  const { boolean, toggleHandler } = useSlider(false);
 
   return (
-    <div className={boolean ? classes.container : classes.undisplayed}>
-      <SidebarHeader boolean={boolean} toggle={toggleHandler} />
-      <div className={boolean ? classes.subContainer : classes.nondisplay}>
+    <Fragment>
+      {!boolean && (
+        <button onClick={toggleHandler} className={classes.button}>
+          <HiOutlineMenu />
+        </button>
+      )}
+      <Container
+        title="Menu"
+        icon={<HiOutlineMenu />}
+        boolean={boolean}
+        toggle={toggleHandler}
+      >
         <Tasks />
         <Lists />
         <Actions />
-      </div>
-    </div>
+      </Container>
+    </Fragment>
   );
 }
 

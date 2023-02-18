@@ -1,43 +1,20 @@
-.container {
+.button {
   position: fixed;
   display: flex;
-  flex-direction: column;
-  width: 87%;
-  background-color: var(--background-color-600);
-  height: 100vh;
-  padding: 0px 19px;
-  z-index: 199;
-}
-
-.nondisplay {
-  display: none;
-}
-
-.undisplayed {
-  position: fixed;
   width: 100%;
-  padding: 0px 10px;
+  padding: 20px 0 10px 30px;
+  font-size: 22px;
   background-color: var(--background-color-500);
-}
-
-.undisplayed h3 {
-  display: none;
+  border-bottom: 0.1px solid var(--border-color-300);
 }
 
 @media (min-width: 885px) {
-  .container {
-    width: 24%;
-    height: 95vh;
-    min-width: 230px;
-    margin: 20px;
-    border-radius: 10px;
-    position: relative;
-  }
-
-  .undisplayed {
+  .button {
     position: relative;
     width: auto;
-    margin: 20px;
+    margin: 40px;
+    padding: 0;
     background-color: var(--background-color-500);
+    border: none;
   }
 }
