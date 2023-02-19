@@ -9,6 +9,7 @@
 main {
   display: flex;
   flex-direction: column;
+  /* flex-grow: 0.4; */
   margin: 60px 20px;
 }
 
@@ -22,5 +23,6 @@ main {
 @media (min-width: 885px) {
   main {
     margin: 20px;
+    flex-grow: 0.95;
   }
 }

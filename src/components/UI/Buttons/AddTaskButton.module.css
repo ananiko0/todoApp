@@ -1,0 +1,14 @@
+.button {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid var(--border-color-300);
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 12px;
+  transition: 0.54s;
+}
+
+.button :hover + .button p {
+  color: red;
+}
