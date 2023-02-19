@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  height: 45px;
+  width: 93%;
+  border-bottom: 1px solid var(--border-color-300);
+  font-size: 16px;
+  padding: 12px;
+  /* cursor: pointer; */
+}
+
+.label {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.container input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background-color: rgb(237, 237, 237);
+  border-radius: 2px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.container input:after {
+  font-family: "Font Awesome 6 free";
+  font-weight: 900;
+  font-size: 12px;
+  content: "\f00c";
+  color: white;
+  transition: 0.4s;
+  opacity: 0;
+}
+
+/* .container input:hover {
+  background-color: #c5c5c5;
+} */
+
+.container input:checked {
+  background-color: rgb(89, 181, 181);
+}
+.container input:checked::after {
+  opacity: 1;
+}

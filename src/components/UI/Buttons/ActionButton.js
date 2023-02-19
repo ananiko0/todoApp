@@ -13,6 +13,7 @@ function ActionButton({ text, clickHandler, type, disabled }) {
     paragraphStyle.fontSize = "22px";
     style.borderColor = "transparent";
     style.width = "1px";
+    style.padding = "0";
     style.marginTop = "20px";
   }
   return (
