@@ -9,3 +9,7 @@
   border: 1px solid var(--border-color-300);
   font-size: 16px;
 }
+
+.errorText {
+  color: rgb(205, 96, 114);
+}

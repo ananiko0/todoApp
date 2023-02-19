@@ -1,28 +1,37 @@
 import React, { Fragment } from "react";
+import { GrChapterAdd } from "react-icons/gr";
 
+import ActionButton from "../UI/Buttons/ActionButton";
+import useSlider from "../../hooks/useSlider";
 import StickyNoteInfo from "./StickyNoteInfo";
 import StickyNote from "./StickyNote/StickyNote";
-import AddNewNote from "./StickyNote/AddNewNote";
 import classes from "./Sticky.module.css";
+import StickyNoteSlider from "./NewStickyNote/StickySlider";
 
-const stickyNotes = StickyNoteInfo.map((item) => (
-  <StickyNote
-    title={item.title}
-    text={item.text}
-    color={item.color}
-    key={item.title + item.color}
-  />
-));
 function Sticky(props) {
+  const { boolean, toggleHandler } = useSlider(false);
+  const stickyNotes = StickyNoteInfo.map((item) => (
+    <StickyNote
+      title={item.title}
+      text={item.text}
+      color={item.color}
+      key={item.title + item.color}
+    />
+  ));
+
   return (
     <Fragment>
-      <h2>Sticky Wall</h2>
-      <div className={classes.container}>
-        {stickyNotes}
-        <StickyNote color="rgb(226 226 226)">
-          <AddNewNote />
-        </StickyNote>
+      <div className={classes.titleContainer}>
+        <h2>Sticky Wall</h2>
+        <ActionButton
+          text={<GrChapterAdd />}
+          type="edit"
+          clickHandler={toggleHandler}
+        />
+        <StickyNoteSlider toggleHandler={toggleHandler} boolean={boolean} />
       </div>
+
+      <div className={classes.container}>{stickyNotes}</div>
     </Fragment>
   );
 }

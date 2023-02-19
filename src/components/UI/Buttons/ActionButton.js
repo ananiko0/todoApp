@@ -2,11 +2,18 @@ import React from "react";
 
 import classes from "./Button.module.css";
 
-function ActionButton({ text, clickHandler, type }) {
+function ActionButton({ text, clickHandler, type, disabled }) {
   const style = {};
+  const paragraphStyle = {};
   if (type === "submit") {
     style.backgroundColor = "#ffd43b";
     style.borderColor = "transparent";
+  }
+  if (type === "edit") {
+    paragraphStyle.fontSize = "22px";
+    style.borderColor = "transparent";
+    style.width = "1px";
+    style.marginTop = "20px";
   }
   return (
     <button
@@ -14,8 +21,9 @@ function ActionButton({ text, clickHandler, type }) {
       style={style}
       type={type}
       onClick={clickHandler}
+      disabled={disabled}
     >
-      <p>{text}</p>
+      <p style={paragraphStyle}>{text}</p>
     </button>
   );
 }
