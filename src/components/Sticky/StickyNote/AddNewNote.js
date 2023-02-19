@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 
@@ -9,10 +9,7 @@ import classes from "./AddNewNote.module.css";
 
 function AddNewNote(props) {
   const { boolean, toggleHandler } = useSlider(false);
-  useEffect(() => {
-    console.log("changed");
-  }, [boolean]);
-  console.log(boolean);
+
   return (
     <Fragment>
       <button className={classes.button} onClick={toggleHandler}>
