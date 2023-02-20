@@ -1,13 +1,37 @@
-.container {
+.outerContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 10px;
-  height: 45px;
+  height: max-content;
   width: 93%;
   border-bottom: 1px solid var(--border-color-300);
   font-size: 16px;
   padding: 12px;
   /* cursor: pointer; */
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 41px;
+}
+
+.listnameContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dateContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.innerContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .label {
@@ -49,4 +73,18 @@
 }
 .container input:checked::after {
   opacity: 1;
+}
+
+@media (min-width: 340px) {
+  .infoContainer {
+    flex-direction: row;
+  }
+
+  .dateContainer {
+    padding-right: 10px;
+  }
+  .istnameContainer {
+    padding-left: 10px;
+    border-left: 1px solid var(--border-color-300);
+  }
 }

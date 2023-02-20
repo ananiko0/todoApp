@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.select {
+  padding: 6px;
+  border: solid 1px var(--border-color-300);
+  border-radius: 4px;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  background-color: transparent;
+}
+@media (min-width: 692px) {
+  .container {
+    width: 40%;
+  }
+}
+
+@media (min-width: 885px) {
+  .container {
+    width: 100%;
+  }
+}

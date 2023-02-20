@@ -5,7 +5,11 @@ import NewStickyNote from "./NewStickyNote";
 
 function StickyNoteSlider({ title, text, color, toggleHandler, boolean }) {
   return (
-    <Slider boolean={boolean} toggleHandler={toggleHandler}>
+    <Slider
+      boolean={boolean}
+      toggleHandler={toggleHandler}
+      title="New Sticky Note"
+    >
       <NewStickyNote
         toggle={toggleHandler}
         title={title}

@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import Container from "../../UI/Container/Container";
 
-function Slider({ children, boolean, toggleHandler }) {
+function Slider({ children, boolean, toggleHandler, title }) {
   return (
     <Fragment>
       {boolean &&
@@ -13,7 +13,7 @@ function Slider({ children, boolean, toggleHandler }) {
             toggle={toggleHandler}
             boolean={boolean}
             icon={<AiOutlineClose />}
-            title="New Sticky Note"
+            title={title}
           >
             {children}
           </Container>,
