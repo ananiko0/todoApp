@@ -10,6 +10,11 @@
   font-size: 16px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .errorText {
   color: rgb(205, 96, 114);
 }

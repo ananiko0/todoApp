@@ -17,10 +17,12 @@ const listInfo = [
     name: "Groceries",
     path: "/groceries",
   },
+  /*
   {
     icon: <HiPlusCircle style={{ color: "rgba(73, 73, 74, 0.505)" }} />,
     name: "Add New List",
     path: "/new-list",
   },
+  */
 ];
 export default listInfo;

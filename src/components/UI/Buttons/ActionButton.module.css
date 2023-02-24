@@ -2,6 +2,7 @@
   padding: 10px;
   background-color: transparent;
   border-radius: 4px;
+  max-width: 200px;
   width: calc(50% - 5px);
   border: 1px solid var(--border-color-300);
   transition: 0.3s;

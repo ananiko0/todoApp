@@ -6,6 +6,7 @@ import Main from "./pages/Main";
 import StickyWall from "./pages/StickyWall";
 import Today from "./pages/Today";
 import SideBar from "./components/sidebar/SideBar";
+import Settings from "./pages/Settings";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route element={<Main />} path="/" />
             <Route element={<StickyWall />} path="/sticky-wall" />
             <Route element={<Today />} path="/today" />
+            <Route element={<Settings />} path="/settings" />
           </Routes>
         </main>
       </div>

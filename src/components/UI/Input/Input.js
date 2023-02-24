@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import classes from "./Input.module.css";
 
 function Input({ name, type, onChange, onBlur, value, hasError, errorText }) {
   const style = {};
-  style.height = name === "Title" ? "19px" : "100px";
+  style.height = name === "description" ? "100px" : "19px";
 
   return (
-    <Fragment>
+    <div className={classes.container}>
       <textarea
         placeholder={name}
         className={classes.input}
@@ -19,7 +19,7 @@ function Input({ name, type, onChange, onBlur, value, hasError, errorText }) {
         value={value}
       />
       {hasError && <p className={classes.errorText}>{errorText}</p>}
-    </Fragment>
+    </div>
   );
 }
 
