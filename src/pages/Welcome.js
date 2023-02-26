@@ -1,10 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
+import WelcomeImage from "../components/welcome/WelcomeImage";
 function Welcome(props) {
-  console.log("this is wecome");
   return (
-    <div>
-      <h1>welcome</h1>
+    <div style={{ display: "flex", gap: "10px" }}>
+      <WelcomeImage />
+      <Outlet />
     </div>
   );
 }

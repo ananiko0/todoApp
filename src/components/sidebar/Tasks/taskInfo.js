@@ -9,22 +9,22 @@ const taskInfo = [
   {
     icon: <HiOutlineChevronDoubleRight style={{ color: "black" }} />,
     name: "Upcoming",
-    path: "/upcoming",
+    path: "/me/upcoming",
   },
   {
     icon: <HiOutlineListBullet style={{ color: "black" }} />,
     name: "Today",
-    path: "/today",
+    path: "/me/today",
   },
   {
     icon: <HiOutlineCalendarDays style={{ color: "black" }} />,
     name: "Calendar",
-    path: "/calendar",
+    path: "/me/calendar",
   },
   {
     icon: <HiPaperClip style={{ color: "black" }} />,
     name: "Sticky Wall",
-    path: "/sticky-wall",
+    path: "/me/sticky-wall",
   },
 ];
 

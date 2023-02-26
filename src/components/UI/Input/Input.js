@@ -2,13 +2,23 @@ import React from "react";
 
 import classes from "./Input.module.css";
 
-function Input({ name, type, onChange, onBlur, value, hasError, errorText }) {
+function Input({
+  name,
+  type,
+  onChange,
+  onBlur,
+  value,
+  hasError,
+  errorText,
+  auth,
+}) {
   const style = {};
   style.height = name === "description" ? "100px" : "19px";
+  // style.width = auth && "100%";
 
   return (
     <div className={classes.container}>
-      <textarea
+      <input
         placeholder={name}
         className={classes.input}
         style={style}

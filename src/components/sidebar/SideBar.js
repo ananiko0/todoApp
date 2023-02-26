@@ -9,12 +9,12 @@ import Actions from "./Actions/Actions";
 import classes from "./SideBar.module.css";
 
 function SideBar(props) {
-  const { boolean, toggleHandler } = useSlider(false);
+  const { boolean, close, open } = useSlider(false, true);
 
   return (
     <Fragment>
       {!boolean && (
-        <button onClick={toggleHandler} className={classes.button}>
+        <button onClick={open} className={classes.button}>
           <HiOutlineMenu />
         </button>
       )}
@@ -22,7 +22,7 @@ function SideBar(props) {
         title="Menu"
         icon={<HiOutlineMenu />}
         boolean={boolean}
-        toggle={toggleHandler}
+        toggle={close}
       >
         <Tasks />
         <Lists />

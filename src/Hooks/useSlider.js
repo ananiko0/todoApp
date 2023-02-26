@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import SliderContext from "../store/SliderContext";
 
-function useSlider(initialState) {
+function useSlider(initialState, sideBar) {
   const { boolean, toggle, setTrue, setFalse } = useBoolean(initialState);
   const sliderCtx = useContext(SliderContext);
   const toggleHandler = () => {
@@ -13,9 +13,20 @@ function useSlider(initialState) {
       if (boolean) document.body.style.overflow = "unset";
     }
     toggle();
-    sliderCtx.onToggle();
+    !sideBar && sliderCtx.onToggle();
   };
-  return { boolean, toggleHandler, setTrue, setFalse };
+
+  const open = () => {
+    document.body.style.overflow = "hidden";
+    setTrue();
+  };
+
+  const close = () => {
+    document.body.style.overflow = "unset";
+    setFalse();
+  };
+
+  return { boolean, toggleHandler, open, close };
 }
 
 export default useSlider;
