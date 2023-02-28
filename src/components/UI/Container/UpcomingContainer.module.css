@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px;
+  border: 1px solid var(--border-color-300);
+  border-radius: 8px;
+  width: 95%;
+  margin-bottom: 20px;
+}
+
+.container h3 {
+  margin: 0;
+}

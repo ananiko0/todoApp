@@ -4,11 +4,10 @@
   justify-content: space-between;
   gap: 10px;
   height: max-content;
-  width: 93%;
+  width: 97%;
   border-bottom: 1px solid var(--border-color-300);
   font-size: 16px;
-  padding: 12px;
-  /* cursor: pointer; */
+  padding: 0px 40px 12px 0px;
 }
 
 .infoContainer {

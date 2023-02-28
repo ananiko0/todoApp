@@ -12,6 +12,7 @@ import Settings from "./pages/Settings";
 import SignIn from "./components/Auth/SignIn";
 import SignUp from "./components/Auth/SignUp";
 import ForgotPass from "./components/Auth/ForgotPass";
+import Upcoming from "./pages/Upcoming";
 import WelcomeText from "./components/welcome/WelcomeText";
 
 import "./App.css";
@@ -48,6 +49,7 @@ function App() {
               <Route element={<Today />} path="today" />
               <Route element={<StickyWall />} path="sticky-wall" />
               <Route element={<Settings />} path="settings" />
+              <Route element={<Upcoming />} path="upcoming" />
             </Route>
           </Routes>
         </main>

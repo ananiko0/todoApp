@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import taskInfo from "../utils/taskInfo";
 import useSlider from "../hooks/useSlider";
+import { displayDate, filterToday } from "../utils/DateFunctions";
 import Task from "../components/Tasks/Task";
 import MainContainer from "../components/UI/Container/MainContainer";
 import TaskSlider from "../components/Tasks/TaskSlider";
+import TasksContext from "../store/TasksContext";
 
 function Today(props) {
   const { boolean, toggleHandler } = useSlider(false);
+  const { tasks } = useContext(TasksContext);
 
-  const tasks = taskInfo.map((item) => (
+  const tasksFiltered = tasks.filter((task) => filterToday(task.date));
+
+  const tasksRendered = tasksFiltered.map((item) => (
     <Task
-      name={item.name}
+      name={item.title}
       description={item.description}
-      date={item.date}
-      listName={item.listName}
+      date={displayDate(item.date)}
+      listName={item.list}
       color={item.color}
-      key={item.name + item.date + item.color}
+      key={item.id}
     />
   ));
 
@@ -28,7 +32,7 @@ function Today(props) {
         boolean={boolean}
         toggleHandler={toggleHandler}
       >
-        {tasks}
+        {tasksRendered}
       </MainContainer>
     </div>
   );

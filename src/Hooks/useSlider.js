@@ -17,12 +17,16 @@ function useSlider(initialState, sideBar) {
   };
 
   const open = () => {
-    document.body.style.overflow = "hidden";
+    if (window.innerWidth < 885) {
+      document.body.style.overflow = "hidden";
+    }
     setTrue();
   };
 
   const close = () => {
-    document.body.style.overflow = "unset";
+    if (window.innerWidth < 885) {
+      document.body.style.overflow = "unset";
+    }
     setFalse();
   };
 
