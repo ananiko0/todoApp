@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import ListContext from "../../../store/ListContext";
 
-import listInfo from "../../sidebar/Lists/listInfo";
 import classes from "./ListInput.module.css";
 
 function ListInput({ value, onChange }) {
-  const listOptions = listInfo.map((item, index) => {
+  const { lists } = useContext(ListContext);
+  const listOptions = lists.map((item, index) => {
     return (
       <option value={item.name.toLocaleLowerCase()} key={item.name}>
         {item.name}

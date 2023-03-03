@@ -1,29 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { WiMoonFull } from "react-icons/wi";
+import { useNavigate } from "react-router-dom";
+import Randomstring from "randomstring";
 
 import ListItem from "../../UI/LinkListItem/ListItem";
-import listInfo from "./listInfo";
 import classes from "./Lists.module.css";
 import NewList from "./NewList";
+import ListContext from "../../../store/ListContext";
 
 function Lists(props) {
-  const [listArr, setListArr] = useState(listInfo);
+  const navigate = useNavigate();
+  const { addList, lists } = useContext(ListContext);
 
   const submitHandler = (newItem) => {
-    const path = `/${newItem.toLowerCase()}`;
+    const path = `me/lists/${newItem.toLowerCase()}`;
     const newListItem = {
       name: newItem,
       icon: <WiMoonFull style={{ color: "rgb(91, 191, 222)" }} />,
+      id: Randomstring.generate(),
       path,
     };
-    setListArr((prev) => [...prev, newListItem]);
+    addList(newListItem);
+    navigate(path);
   };
-  const list = listArr.map((item) => (
+  const list = lists.map((item) => (
     <ListItem
       text={item.name}
       icon={item.icon}
       path={item.path}
-      key={item.name}
+      key={item.id}
     />
   ));
   return (

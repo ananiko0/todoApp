@@ -16,6 +16,7 @@ import Upcoming from "./pages/Upcoming";
 import WelcomeText from "./components/welcome/WelcomeText";
 
 import "./App.css";
+import List from "./pages/List";
 
 function App() {
   const location = useLocation();
@@ -51,6 +52,7 @@ function App() {
               <Route element={<StickyWall />} path="sticky-wall" />
               <Route element={<Settings />} path="settings" />
               <Route element={<Upcoming />} path="upcoming" />
+              <Route element={<List />} path="lists/:listName" />
             </Route>
           </Routes>
         </main>
