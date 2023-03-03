@@ -17,11 +17,17 @@ export const TasksContextProvider = (props) => {
     setTasks((prev) => [...prev, newTask]);
   };
 
-  const removeTask = (removedTask) => {
-    setTasks((prev) => prev.filter((task) => task.id !== removedTask.id));
+  const removeTask = (id) => {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
   };
 
-  const editTask = () => {};
+  const editTask = (task) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((item) => item.id === task.id);
+      prev[index] = task;
+      return prev;
+    });
+  };
 
   const contextValue = {
     tasks,

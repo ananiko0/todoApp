@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import useInput from "../../hooks/useInput";
 import Input from "../UI/Input/Input";
@@ -6,17 +6,26 @@ import DateInput from "../UI/Input/DateInput";
 import ActionButton from "../UI/Buttons/ActionButton";
 import ListInput from "../UI/Input/ListInput";
 import { validator } from "../../utils/validator";
+import TasksContext from "../../store/TasksContext";
 import classes from "./EditTask.module.css";
 
-function EditTask({ boolean, toggle, title, text, date, listName }) {
+function EditTask({
+  boolean,
+  toggle,
+  title,
+  text,
+  date,
+  id,
+  dateValue,
+  listName,
+}) {
+  const taskCtx = useContext(TasksContext);
   const enteredTitle = useInput(validator, title);
   const enteredDescription = useInput(validator, text);
-  const enteredDate = useInput(validator, date);
+  const enteredDate = useInput(() => {}, dateValue);
   const enteredListName = useInput(validator, listName);
 
   const formIsValid = enteredTitle.isValid;
-
-  console.log(enteredDate.value);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -26,16 +35,25 @@ function EditTask({ boolean, toggle, title, text, date, listName }) {
     const data = {
       title: enteredTitle.value,
       description: enteredDescription.value,
-      date: enteredDate.value,
-      listName: enteredListName.value,
+      date: new Date(enteredDate.value),
+      list: enteredListName.value,
+      id: id,
     };
-    console.log(data);
+
+    if (data.id) {
+      taskCtx.editTask(data);
+    } else {
+      taskCtx.addTask(data);
+    }
+
     toggle();
   };
 
-  const deleteHandler = () => {
-    //send request to server to delete
+  const deleteHandler = (event) => {
+    event.preventDefault();
+    taskCtx.removeTask(id);
     console.log("deleted");
+    toggle();
   };
   return (
     <form className={classes.container} onSubmit={submitHandler}>
@@ -43,7 +61,7 @@ function EditTask({ boolean, toggle, title, text, date, listName }) {
         <Input
           name="Title"
           type="text"
-          errorText="Title should note be empty"
+          errorText="Title should not be empty"
           onChange={enteredTitle.valueChangeHandler}
           onBlur={enteredTitle.inputBlurHandler}
           value={enteredTitle.value}
@@ -54,9 +72,7 @@ function EditTask({ boolean, toggle, title, text, date, listName }) {
           type="text"
           errorText="Title should note be empty"
           onChange={enteredDescription.valueChangeHandler}
-          onBlur={enteredDescription.inputBlurHandler}
           value={enteredDescription.value}
-          hasError={enteredDescription.hasError}
         />
         <ListInput
           value={enteredListName.value}
@@ -68,7 +84,7 @@ function EditTask({ boolean, toggle, title, text, date, listName }) {
         />
       </div>
       <div className={classes.buttonContainer}>
-        <ActionButton text="Delete Note" onClick={deleteHandler} />
+        <ActionButton text="Delete Note" clickHandler={deleteHandler} />
         <ActionButton
           text="Save Changes"
           type="submit"

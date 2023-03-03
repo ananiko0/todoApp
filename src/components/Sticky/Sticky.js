@@ -1,21 +1,24 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { GrChapterAdd } from "react-icons/gr";
 
 import ActionButton from "../UI/Buttons/ActionButton";
 import useSlider from "../../hooks/useSlider";
-import StickyNoteInfo from "./StickyNoteInfo";
+// import StickyNoteInfo from "./StickyNoteInfo";
 import StickyNote from "./StickyNote/StickyNote";
 import classes from "./Sticky.module.css";
 import StickyNoteSlider from "./NewStickyNote/StickySlider";
+import StickyContext from "../../store/StickyContext";
 
 function Sticky(props) {
   const { boolean, toggleHandler } = useSlider(false);
-  const stickyNotes = StickyNoteInfo.map((item) => (
+  const { stickyNotes } = useContext(StickyContext);
+  const stickyNotesDisplay = stickyNotes.map((item) => (
     <StickyNote
       title={item.title}
       text={item.text}
       color={item.color}
-      key={item.title + item.color}
+      id={item.id}
+      key={item.id}
     />
   ));
 
@@ -31,7 +34,7 @@ function Sticky(props) {
         <StickyNoteSlider toggleHandler={toggleHandler} boolean={boolean} />
       </div>
 
-      <div className={classes.container}>{stickyNotes}</div>
+      <div className={classes.container}>{stickyNotesDisplay}</div>
     </Fragment>
   );
 }

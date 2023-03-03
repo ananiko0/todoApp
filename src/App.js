@@ -44,6 +44,7 @@ function App() {
 
             <Route
               element={protectRoute(isLoggedIn, <Outlet />, "/welcome")}
+              // element={<Outlet />}
               path="/me"
             >
               <Route element={<Today />} path="today" />

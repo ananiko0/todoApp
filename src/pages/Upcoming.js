@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import useSlider from "../hooks/useSlider";
 import TaskSlider from "../components/Tasks/TaskSlider";
@@ -17,6 +17,10 @@ function Upcoming(props) {
   const { boolean, toggleHandler } = useSlider(false);
   const { tasks } = useContext(TasksContext);
 
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
+
   const todayTasks = tasks.filter((task) => filterToday(task.date));
 
   const tomorrowTasks = tasks.filter((task) => filterTomorrow(task.date));
@@ -26,7 +30,9 @@ function Upcoming(props) {
   const todayTasksRendered = todayTasks.map((item) => (
     <Task
       name={item.title}
-      description={item.description}
+      id={item.id}
+      text={item.description}
+      dateValue={item.date}
       // date={displayDate(item.date)}
       listName={item.list}
       color={item.color}
@@ -37,8 +43,10 @@ function Upcoming(props) {
   const tomorrowTasksRendered = tomorrowTasks.map((item) => (
     <Task
       name={item.title}
-      description={item.description}
+      text={item.description}
+      id={item.id}
       // date={displayDate(item.date)}
+      dateValue={item.date}
       listName={item.list}
       color={item.color}
       key={item.id}
@@ -48,9 +56,11 @@ function Upcoming(props) {
   const thisWeekTasksRendered = thisWeekTasks.map((item) => (
     <Task
       name={item.title}
-      description={item.description}
+      text={item.description}
+      dateValue={item.date}
+      id={item.id}
       // date={displayDate(item.date)}
-      // listName={item.list}
+      listName={item.list}
       color={item.color}
       key={item.id}
     />

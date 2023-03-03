@@ -1,11 +1,17 @@
 import Randomstring from "randomstring";
 
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(tomorrow.getDate() + 1);
+const thisWeek = new Date(today);
+thisWeek.setDate(thisWeek.getDate() + 4);
+
 const initialTasks = [
   {
     title: "send emergency list",
     description: "need a lot of things to do one things second thing and so on",
-    date: new Date("2023-02-28"),
-    list: "work",
+    date: today,
+    list: "personal",
     completed: false,
     color: "rgb(252 157 157)",
     id: Randomstring.generate(),
@@ -14,7 +20,7 @@ const initialTasks = [
     title: "call Lily's personal asistant",
     description:
       "need to learn more information about where the order meeting is taking place",
-    date: new Date("2023-02-28"),
+    date: today,
     list: "work",
     completed: false,
     color: "rgb(252 157 157)",
@@ -23,14 +29,14 @@ const initialTasks = [
   {
     title: "leave message for dobby",
     description: "dobby needs a reminder that he doesn't have a master",
-    date: new Date("2023-03-01"),
+    date: tomorrow,
     completed: false,
     id: Randomstring.generate(),
   },
   {
     title: "give dobby a sock",
     description: "",
-    date: new Date("2023-03-02"),
+    date: tomorrow,
     list: "personal",
     completed: false,
     color: "rgb(252 157 157)",
@@ -39,7 +45,7 @@ const initialTasks = [
   {
     title: "army practice",
     description: "",
-    date: new Date("2023-03-02"),
+    date: thisWeek,
     list: "personal",
     completed: false,
     color: "rgb(252 157 157)",
@@ -48,7 +54,7 @@ const initialTasks = [
   {
     title: "army practice",
     description: "",
-    date: new Date("2023-04-02"),
+    date: thisWeek,
     list: "personal",
     completed: false,
     color: "rgb(252 157 157)",

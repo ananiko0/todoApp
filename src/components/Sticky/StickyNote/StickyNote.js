@@ -6,7 +6,7 @@ import ActionButton from "../../UI/Buttons/ActionButton";
 import useSlider from "../../../hooks/useSlider";
 import classes from "./StickyNote.module.css";
 
-function StickyNote({ title, text, color, children }) {
+function StickyNote({ title, text, color, id }) {
   const { boolean, toggleHandler } = useSlider(false);
 
   return (
@@ -22,6 +22,7 @@ function StickyNote({ title, text, color, children }) {
       />
       <StickyNoteSlider
         title={title}
+        id={id}
         text={text}
         color={color}
         toggleHandler={toggleHandler}

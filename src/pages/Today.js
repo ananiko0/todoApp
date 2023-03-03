@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import useSlider from "../hooks/useSlider";
 import { displayDate, filterToday } from "../utils/DateFunctions";
@@ -11,13 +11,19 @@ function Today(props) {
   const { boolean, toggleHandler } = useSlider(false);
   const { tasks } = useContext(TasksContext);
 
+  // useEffect(() => {
+  //   console.log(tasks);
+  // }, [tasks]);
+
   const tasksFiltered = tasks.filter((task) => filterToday(task.date));
 
   const tasksRendered = tasksFiltered.map((item) => (
     <Task
       name={item.title}
-      description={item.description}
+      id={item.id}
+      text={item.description}
       date={displayDate(item.date)}
+      dateValue={item.date}
       listName={item.list}
       color={item.color}
       key={item.id}

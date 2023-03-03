@@ -3,7 +3,7 @@ import Slider from "../../UI/Container/Slider";
 
 import NewStickyNote from "./NewStickyNote";
 
-function StickyNoteSlider({ title, text, color, toggleHandler, boolean }) {
+function StickyNoteSlider({ title, id, text, color, toggleHandler, boolean }) {
   return (
     <Slider
       boolean={boolean}
@@ -13,6 +13,7 @@ function StickyNoteSlider({ title, text, color, toggleHandler, boolean }) {
       <NewStickyNote
         toggle={toggleHandler}
         title={title}
+        id={id}
         text={text}
         color={color}
       />

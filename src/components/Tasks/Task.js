@@ -3,14 +3,23 @@ import { AiFillEdit } from "react-icons/ai";
 import { BsCalendar2XFill, BsFillSquareFill } from "react-icons/bs";
 import ActionButton from "../UI/Buttons/ActionButton";
 import useSlider from "../../hooks/useSlider";
-
+import listInfo from "../sidebar/Lists/listInfo";
 import classes from "./Task.module.css";
 import TaskSlider from "./TaskSlider";
 
-function Task({ name, date, listName, color, text }) {
+function Task({ name, id, date, dateValue, listName, text }) {
   const { boolean, toggleHandler } = useSlider(false);
   const dateIsAvailable = !!date;
   const listNameIsAvalable = !!listName;
+
+  //set correct color
+  const colors = listInfo.filter(
+    (item) => item.name.toLowerCase() === listName
+  );
+  let color;
+  if (colors.length > 0) {
+    color = colors[0].color;
+  }
 
   const dateInfo = dateIsAvailable ? (
     <div className={classes.dateContainer}>
@@ -20,7 +29,7 @@ function Task({ name, date, listName, color, text }) {
   ) : (
     ""
   );
-  const listInfo = listNameIsAvalable ? (
+  const listInfoElement = listNameIsAvalable ? (
     <div className={classes.listnameContainer}>
       <BsFillSquareFill color={color} />
       {listName}
@@ -32,7 +41,7 @@ function Task({ name, date, listName, color, text }) {
 
   const infoContainer = infoContainerVisible && (
     <div className={classes.infoContainer}>
-      {dateInfo} {listInfo}
+      {dateInfo} {listInfoElement}
     </div>
   );
 
@@ -51,11 +60,13 @@ function Task({ name, date, listName, color, text }) {
         />
         <TaskSlider
           title={name}
+          id={id}
           text={text}
           date={date}
           listName={listName}
           toggleHandler={toggleHandler}
           boolean={boolean}
+          dateValue={dateValue}
         />
       </div>
       {infoContainer}

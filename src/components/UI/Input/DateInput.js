@@ -1,5 +1,6 @@
 import React from "react";
 
+import { inputDate } from "../../../utils/DateFunctions";
 import classes from "./DateInput.module.css";
 
 function DateInput({ onChange, value }) {
@@ -15,7 +16,7 @@ function DateInput({ onChange, value }) {
         type="date"
         id="due-date"
         name="due-date"
-        value={value}
+        value={inputDate(value)}
         min="2022-01-01"
       ></input>
     </div>

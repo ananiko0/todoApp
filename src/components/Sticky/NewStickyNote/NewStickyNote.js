@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import ColorInputs from "../../UI/Input/ColorInputs";
 import useInput from "../../../hooks/useInput";
@@ -6,8 +6,11 @@ import { validator } from "../../../utils/validator";
 import Input from "../../UI/Input/Input";
 import classes from "./NewStickyNote.module.css";
 import ActionButton from "../../UI/Buttons/ActionButton";
+import StickyContext from "../../../store/StickyContext";
 
-function NewStickyNote({ toggle, title, text, color }) {
+function NewStickyNote({ toggle, title, id, text, color }) {
+  //get context
+  const stickyCtx = useContext(StickyContext);
   //get entered values
   const enteredTitle = useInput(validator, title);
   const enteredDescription = useInput(validator, text);
@@ -27,14 +30,25 @@ function NewStickyNote({ toggle, title, text, color }) {
     if (!formIsValid) return;
 
     //send request to server
-    console.log(
-      { title: enteredTitle.value },
-      { enteredDescription: enteredDescription.value },
-      { color: chosenColor }
-    );
-    console.log("submitted");
+    const data = {
+      title: enteredTitle.value,
+      text: enteredDescription.value,
+      color: chosenColor,
+      id: id,
+    };
+    if (data.id) {
+      stickyCtx.editNote(data);
+    } else {
+      stickyCtx.addNote(data);
+    }
 
     //maybe later add close function in useSlider and use it instead of toggle
+    toggle();
+  };
+
+  const deleteHandler = (event) => {
+    event.preventDefault();
+    stickyCtx.removeNote(id);
     toggle();
   };
 
@@ -63,7 +77,7 @@ function NewStickyNote({ toggle, title, text, color }) {
         <ColorInputs onChange={changeColorHandler} />
       </div>
       <div className={classes.buttonContainer}>
-        <ActionButton text="Delete Note" onClick={() => {}} />
+        <ActionButton text="Delete Note" clickHandler={deleteHandler} />
         <ActionButton
           text="Save Changes"
           type="submit"

@@ -11,6 +11,27 @@ export const displayDate = (date) => {
   });
 };
 
+export const inputDate = (date) => {
+  const locDate = date
+    .toLocaleString("default", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    })
+    .split("/");
+
+  [locDate[0], locDate[locDate.length - 1]] = [
+    locDate[locDate.length - 1],
+    locDate[0],
+  ];
+
+  return locDate.join("-");
+};
+
+// export const listDate = (date) => {
+//   return new Date(date)
+// }
+
 export const filterToday = (date) => {
   if (
     date.getDate() === todayDay &&
