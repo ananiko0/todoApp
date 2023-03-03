@@ -5,6 +5,7 @@ import ListItem from "../../UI/LinkListItem/ListItem";
 import classes from "./Tasks.module.css";
 
 function Tasks(props) {
+  //render tasks menu
   const tasks = taskInfo.map((item) => (
     <ListItem
       text={item.name}

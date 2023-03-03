@@ -1,18 +1,23 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import Task from "../components/Tasks/Task";
+import TasksContext from "../store/TasksContext";
 import { displayDate } from "../utils/DateFunctions";
+import Task from "../components/Tasks/Task";
 import MainContainer from "../components/UI/Container/MainContainer";
 import TaskSlider from "../components/Tasks/TaskSlider";
 import useSlider from "../hooks/useSlider";
-import TasksContext from "../store/TasksContext";
 
 function List(props) {
+  //get task context, params and set state
   const { boolean, toggleHandler } = useSlider(false);
   let { listName } = useParams();
   const { tasks } = useContext(TasksContext);
+
+  //filter task by listname
   const tasksFiltered = tasks.filter((task) => task.list === listName);
+
+  //render tasks
   const tasksRendered = tasksFiltered.map((item) => (
     <Task
       name={item.title}

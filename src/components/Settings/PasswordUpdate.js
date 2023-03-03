@@ -7,6 +7,7 @@ import { validator } from "../../utils/validator";
 import classes from "./SettingsForm.module.css";
 
 function PasswordUpdate(props) {
+  //set inputs
   const currentPassword = useInput(validator);
   const updatePassword = useInput(validator);
   const passwordRepeat = useInput(validator);

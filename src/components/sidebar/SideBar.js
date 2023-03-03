@@ -9,6 +9,7 @@ import Actions from "./Actions/Actions";
 import classes from "./SideBar.module.css";
 
 function SideBar(props) {
+  //set sidebar state
   const { boolean, close, open } = useSlider(false, true);
 
   return (

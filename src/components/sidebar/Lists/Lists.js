@@ -9,10 +9,13 @@ import NewList from "./NewList";
 import ListContext from "../../../store/ListContext";
 
 function Lists(props) {
+  //get context and navigation
   const navigate = useNavigate();
   const { addList, lists } = useContext(ListContext);
 
+  //add new list handler
   const submitHandler = (newItem) => {
+    //set new list item
     const path = `me/lists/${newItem.toLowerCase()}`;
     const newListItem = {
       name: newItem,
@@ -20,9 +23,15 @@ function Lists(props) {
       id: Randomstring.generate(),
       path,
     };
+
+    //update context
     addList(newListItem);
+
+    //navigate to new list
     navigate(path);
   };
+
+  //render lists
   const list = lists.map((item) => (
     <ListItem
       text={item.name}

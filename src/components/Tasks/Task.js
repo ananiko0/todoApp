@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { BsCalendar2XFill, BsFillSquareFill } from "react-icons/bs";
 import ActionButton from "../UI/Buttons/ActionButton";
 import useSlider from "../../hooks/useSlider";
-import listInfo from "../sidebar/Lists/listInfo";
 import classes from "./Task.module.css";
 import TaskSlider from "./TaskSlider";
+import ListContext from "../../store/ListContext";
 
 function Task({ name, id, date, dateValue, listName, text }) {
+  //set slider state
   const { boolean, toggleHandler } = useSlider(false);
+
+  //get list context
+  const { lists } = useContext(ListContext);
+
+  //check if date and list name is available
   const dateIsAvailable = !!date;
   const listNameIsAvalable = !!listName;
 
   //set correct color
-  const colors = listInfo.filter(
-    (item) => item.name.toLowerCase() === listName
-  );
+  const colors = lists.filter((item) => item.name.toLowerCase() === listName);
   let color;
   if (colors.length > 0) {
     color = colors[0].color;
   }
 
+  //render date
   const dateInfo = dateIsAvailable ? (
     <div className={classes.dateContainer}>
       <BsCalendar2XFill color="grey" />
@@ -29,6 +34,8 @@ function Task({ name, id, date, dateValue, listName, text }) {
   ) : (
     ""
   );
+
+  //render list name and color icon
   const listInfoElement = listNameIsAvalable ? (
     <div className={classes.listnameContainer}>
       <BsFillSquareFill color={color} />
@@ -37,8 +44,11 @@ function Task({ name, id, date, dateValue, listName, text }) {
   ) : (
     ""
   );
+
+  //set info container visibility
   const infoContainerVisible = dateIsAvailable || listNameIsAvalable;
 
+  //render list and date
   const infoContainer = infoContainerVisible && (
     <div className={classes.infoContainer}>
       {dateInfo} {listInfoElement}
@@ -50,14 +60,17 @@ function Task({ name, id, date, dateValue, listName, text }) {
       <div className={classes.innerContainer}>
         <label className={classes.label}>
           <input type="checkbox" />
+
           {name}
-          <span className={classes.checkMark}></span>
+          <span className={classes.checkMark} />
         </label>
+
         <ActionButton
           type="edit"
           text={<AiFillEdit />}
           clickHandler={toggleHandler}
         />
+
         <TaskSlider
           title={name}
           id={id}

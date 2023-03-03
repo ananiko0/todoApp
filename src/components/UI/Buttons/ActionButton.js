@@ -5,10 +5,14 @@ import classes from "./ActionButton.module.css";
 function ActionButton({ text, clickHandler, type, disabled }) {
   const style = {};
   const paragraphStyle = {};
+
+  //add submit style
   if (type === "submit") {
     style.backgroundColor = "#ffd43b";
     style.borderColor = "transparent";
   }
+
+  //add edit style
   if (type === "edit") {
     paragraphStyle.fontSize = "22px";
     style.borderColor = "transparent";
@@ -16,6 +20,7 @@ function ActionButton({ text, clickHandler, type, disabled }) {
     style.padding = "0";
     style.marginTop = "20px";
   }
+
   return (
     <button
       className={classes.button}

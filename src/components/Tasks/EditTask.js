@@ -9,29 +9,25 @@ import { validator } from "../../utils/validator";
 import TasksContext from "../../store/TasksContext";
 import classes from "./EditTask.module.css";
 
-function EditTask({
-  boolean,
-  toggle,
-  title,
-  text,
-  date,
-  id,
-  dateValue,
-  listName,
-}) {
+function EditTask({ toggle, title, text, id, dateValue, listName }) {
+  //get task context
   const taskCtx = useContext(TasksContext);
+
+  //get input
   const enteredTitle = useInput(validator, title);
   const enteredDescription = useInput(validator, text);
   const enteredDate = useInput(() => {}, dateValue);
   const enteredListName = useInput(validator, listName);
 
+  //check form validity
   const formIsValid = enteredTitle.isValid;
 
+  //submit form
   const submitHandler = (event) => {
     event.preventDefault();
     if (!formIsValid) return;
 
-    //send request to server
+    //set up data
     const data = {
       title: enteredTitle.value,
       description: enteredDescription.value,
@@ -40,19 +36,23 @@ function EditTask({
       id: id,
     };
 
+    //edit or add a new one
     if (data.id) {
       taskCtx.editTask(data);
     } else {
       taskCtx.addTask(data);
     }
 
+    //close editor
     toggle();
   };
 
+  //delete task handler
   const deleteHandler = (event) => {
     event.preventDefault();
     taskCtx.removeTask(id);
-    console.log("deleted");
+
+    //close editor
     toggle();
   };
   return (
@@ -67,6 +67,7 @@ function EditTask({
           value={enteredTitle.value}
           hasError={enteredTitle.hasError}
         />
+
         <Input
           name="description"
           type="text"
@@ -74,10 +75,12 @@ function EditTask({
           onChange={enteredDescription.valueChangeHandler}
           value={enteredDescription.value}
         />
+
         <ListInput
           value={enteredListName.value}
           onChange={enteredListName.valueChangeHandler}
         />
+
         <DateInput
           value={enteredDate.value}
           onChange={enteredDate.valueChangeHandler}
@@ -85,6 +88,7 @@ function EditTask({
       </div>
       <div className={classes.buttonContainer}>
         <ActionButton text="Delete Note" clickHandler={deleteHandler} />
+
         <ActionButton
           text="Save Changes"
           type="submit"

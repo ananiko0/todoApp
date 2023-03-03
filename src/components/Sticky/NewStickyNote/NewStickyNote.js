@@ -64,6 +64,7 @@ function NewStickyNote({ toggle, title, id, text, color }) {
           value={enteredTitle.value}
           hasError={enteredTitle.hasError}
         />
+
         <Input
           name="description"
           type="text"
@@ -73,11 +74,13 @@ function NewStickyNote({ toggle, title, id, text, color }) {
           value={enteredDescription.value}
           hasError={enteredDescription.hasError}
         />
+
         <h6>Choose Color:</h6>
         <ColorInputs onChange={changeColorHandler} />
       </div>
       <div className={classes.buttonContainer}>
         <ActionButton text="Delete Note" clickHandler={deleteHandler} />
+
         <ActionButton
           text="Save Changes"
           type="submit"

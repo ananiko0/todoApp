@@ -8,15 +8,14 @@ import TaskSlider from "../components/Tasks/TaskSlider";
 import TasksContext from "../store/TasksContext";
 
 function Today(props) {
+  //set state and get tasks context
   const { boolean, toggleHandler } = useSlider(false);
   const { tasks } = useContext(TasksContext);
 
-  // useEffect(() => {
-  //   console.log(tasks);
-  // }, [tasks]);
-
+  //filter tasks by date
   const tasksFiltered = tasks.filter((task) => filterToday(task.date));
 
+  //render tasks
   const tasksRendered = tasksFiltered.map((item) => (
     <Task
       name={item.title}

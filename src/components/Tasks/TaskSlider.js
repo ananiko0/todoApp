@@ -6,7 +6,6 @@ function TaskSlider({
   title,
   id,
   text,
-  date,
   dateValue,
   listName,
   toggleHandler,
@@ -19,7 +18,6 @@ function TaskSlider({
         id={id}
         title={title}
         text={text}
-        date={date}
         listName={listName}
         dateValue={dateValue}
       />

@@ -5,7 +5,11 @@ import SliderContext from "../store/SliderContext";
 
 function useSlider(initialState, sideBar) {
   const { boolean, toggle, setTrue, setFalse } = useBoolean(initialState);
+
+  //get slider context (so several tasks can not be edited at once)
   const sliderCtx = useContext(SliderContext);
+
+  //toggle so overflow becomes hidden according when window is small
   const toggleHandler = () => {
     if (sliderCtx.sliderOpen !== boolean) return;
     if (window.innerWidth < 885) {

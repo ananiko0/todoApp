@@ -6,6 +6,7 @@ import ActionButton from "../UI/Buttons/ActionButton";
 import classes from "./Auth.module.css";
 
 function ForgotPass(props) {
+  //send code to email
   const formSubmitHandler = (event) => {
     event.preventDefault();
   };

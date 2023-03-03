@@ -10,10 +10,12 @@ import classes from "../../UI/LinkListItem/ListItem.module.css";
 import ListItem from "../../UI/LinkListItem/ListItem";
 
 function Actions(props) {
+  //get logout function from context and navigation
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  //logout hanlder
   const signOutHandler = () => {
-    console.log("signout");
     logout();
     navigate("/welcome");
   };
@@ -25,10 +27,12 @@ function Actions(props) {
         icon={<HiAdjustmentsHorizontal />}
         path="/me/settings"
       />
+
       <button onClick={signOutHandler} className={classes.listItem}>
         <div className={classes.icon}>
           <HiOutlineArrowRightOnRectangle />
         </div>
+
         <h6>sign out</h6>
       </button>
     </div>

@@ -7,6 +7,7 @@ import useSlider from "../../../hooks/useSlider";
 import classes from "./StickyNote.module.css";
 
 function StickyNote({ title, text, color, id }) {
+  //set slider state
   const { boolean, toggleHandler } = useSlider(false);
 
   return (
@@ -15,11 +16,13 @@ function StickyNote({ title, text, color, id }) {
         <h3>{title}</h3>
         <p>{text}</p>
       </div>
+
       <ActionButton
         text={<AiFillEdit />}
         type="edit"
         clickHandler={toggleHandler}
       />
+
       <StickyNoteSlider
         title={title}
         id={id}

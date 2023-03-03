@@ -6,8 +6,11 @@ import Input from "../UI/Input/Input";
 import classes from "./Auth.module.css";
 
 function SignUp(props) {
+  //get contexts
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+
+  //sing up function
   const formSubmitHandler = (event) => {
     event.preventDefault();
     login();

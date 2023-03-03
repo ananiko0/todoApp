@@ -6,13 +6,17 @@ import Input from "../UI/Input/Input";
 import classes from "./Auth.module.css";
 
 function SignIn(props) {
+  //get contexts
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+
+  //log in function
   const formSubmitHandler = (event) => {
     event.preventDefault();
     login();
     navigate("/me/today");
   };
+
   return (
     <div className={classes.container}>
       <h1>Sign In</h1>

@@ -10,8 +10,11 @@ import StickyNoteSlider from "./NewStickyNote/StickySlider";
 import StickyContext from "../../store/StickyContext";
 
 function Sticky(props) {
+  //get contexts and set slider state
   const { boolean, toggleHandler } = useSlider(false);
   const { stickyNotes } = useContext(StickyContext);
+
+  //render stikcy notes
   const stickyNotesDisplay = stickyNotes.map((item) => (
     <StickyNote
       title={item.title}
@@ -26,11 +29,13 @@ function Sticky(props) {
     <Fragment>
       <div className={classes.titleContainer}>
         <h2>Sticky Wall</h2>
+
         <ActionButton
           text={<GrChapterAdd />}
           type="edit"
           clickHandler={toggleHandler}
         />
+
         <StickyNoteSlider toggleHandler={toggleHandler} boolean={boolean} />
       </div>
 

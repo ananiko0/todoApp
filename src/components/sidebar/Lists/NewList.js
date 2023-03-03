@@ -5,12 +5,14 @@ import useInput from "../../../hooks/useInput";
 import classes from "./NewList.module.css";
 
 function NewList({ onSubmit }) {
+  //get listname input
   const enteredListName = useInput(() => {});
 
-  //   console.log(enteredListName.value);
+  //add new list
   const submitHandler = (event) => {
     event.preventDefault();
-    //     console.log(enteredListName.value);
+
+    //call submit function from props
     onSubmit(enteredListName.value);
     enteredListName.reset();
   };

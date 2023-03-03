@@ -14,14 +14,16 @@ import SignUp from "./components/Auth/SignUp";
 import ForgotPass from "./components/Auth/ForgotPass";
 import Upcoming from "./pages/Upcoming";
 import WelcomeText from "./components/welcome/WelcomeText";
-
-import "./App.css";
 import List from "./pages/List";
 
+import "./App.css";
+
 function App() {
+  //get location and login context
   const location = useLocation();
   const { isLoggedIn } = useContext(AuthContext);
 
+  //navigate according to login status
   const protectRoute = (boolean, opt1, opt2) => {
     const element = boolean ? opt1 : <Navigate to={`${opt2}`} />;
     return element;
