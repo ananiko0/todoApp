@@ -1,15 +1,17 @@
 .container {
   width: 100%;
   border-radius: 8px;
+  height: 70vh;
   background-color: black;
   padding: 80px;
+  margin-top: -59px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .container img {
-  width: 300px;
+  width: 200px;
 }
 
 .container h1 {
@@ -17,4 +19,21 @@
   position: absolute;
   top: 0px;
   left: 40px;
+}
+
+@media (min-width: 407px) {
+  .container img {
+    width: 250px;
+  }
+}
+
+@media (min-width: 885px) {
+  .container {
+    margin-top: 0;
+    height: auto;
+  }
+
+  .container img {
+    width: 300px;
+  }
 }

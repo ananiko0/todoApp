@@ -9,7 +9,7 @@ import classes from "../../UI/LinkListItem/ListItem.module.css";
 
 import ListItem from "../../UI/LinkListItem/ListItem";
 
-function Actions(props) {
+function Actions({ close }) {
   //get logout function from context and navigation
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -20,12 +20,20 @@ function Actions(props) {
     navigate("/welcome");
   };
 
+  //close side bar on mobile
+  const clickHandler = () => {
+    if (window.innerWidth < 885) {
+      close();
+    } else return;
+  };
+
   return (
     <div>
       <ListItem
         text="Settings"
         icon={<HiAdjustmentsHorizontal />}
         path="/me/settings"
+        onClick={clickHandler}
       />
 
       <button onClick={signOutHandler} className={classes.listItem}>

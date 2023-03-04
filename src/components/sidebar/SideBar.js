@@ -25,9 +25,9 @@ function SideBar(props) {
         boolean={boolean}
         toggle={close}
       >
-        <Tasks />
-        <Lists />
-        <Actions />
+        <Tasks close={close} />
+        <Lists close={close} />
+        <Actions close={close} />
       </Container>
     </Fragment>
   );

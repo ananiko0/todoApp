@@ -5,6 +5,7 @@ import Input from "../UI/Input/Input";
 import DateInput from "../UI/Input/DateInput";
 import ActionButton from "../UI/Buttons/ActionButton";
 import ListInput from "../UI/Input/ListInput";
+import TextInput from "../UI/Input/TextInput";
 import { validator } from "../../utils/validator";
 import TasksContext from "../../store/TasksContext";
 import classes from "./EditTask.module.css";
@@ -68,7 +69,7 @@ function EditTask({ toggle, title, text, id, dateValue, listName }) {
           hasError={enteredTitle.hasError}
         />
 
-        <Input
+        <TextInput
           name="description"
           type="text"
           errorText="Title should note be empty"

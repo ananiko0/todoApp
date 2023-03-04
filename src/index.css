@@ -76,3 +76,9 @@ a {
 a:visited {
   color: inherit;
 }
+
+textarea {
+  font-family: "Kanit", sans-serif;
+  font-style: normal;
+  color: var(--text-color-500);
+}

@@ -7,7 +7,15 @@ import classes from "./Task.module.css";
 import TaskSlider from "./TaskSlider";
 import ListContext from "../../store/ListContext";
 
-function Task({ name, id, date, dateValue, listName, text }) {
+function Task({
+  name,
+  id,
+  date,
+  dateValue,
+  listName,
+  text,
+  ListNameNotVisible,
+}) {
   //set slider state
   const { boolean, toggleHandler } = useSlider(false);
 
@@ -36,14 +44,15 @@ function Task({ name, id, date, dateValue, listName, text }) {
   );
 
   //render list name and color icon
-  const listInfoElement = listNameIsAvalable ? (
-    <div className={classes.listnameContainer}>
-      <BsFillSquareFill color={color} />
-      {listName}
-    </div>
-  ) : (
-    ""
-  );
+  const listInfoElement =
+    listNameIsAvalable && !ListNameNotVisible ? (
+      <div className={classes.listnameContainer}>
+        <BsFillSquareFill color={color} />
+        {listName}
+      </div>
+    ) : (
+      ""
+    );
 
   //set info container visibility
   const infoContainerVisible = dateIsAvailable || listNameIsAvalable;

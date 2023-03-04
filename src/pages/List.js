@@ -26,6 +26,7 @@ function List(props) {
       date={displayDate(item.date)}
       dateValue={item.date}
       listName={item.list}
+      ListNameNotVisible={true}
       color={item.color}
       key={item.id}
     />
@@ -34,7 +35,7 @@ function List(props) {
   return (
     <div>
       <MainContainer
-        title="Today"
+        title={listName}
         slider={<TaskSlider boolean={boolean} toggleHandler={toggleHandler} />}
         boolean={boolean}
         toggleHandler={toggleHandler}

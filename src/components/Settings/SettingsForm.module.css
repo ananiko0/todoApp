@@ -1,4 +1,10 @@
 .form {
   margin-bottom: 20px;
-  width: 50%;
+  width: 100%;
+}
+
+@media (min-width: 885px) {
+  .form {
+    width: 50%;
+  }
 }

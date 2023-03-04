@@ -6,6 +6,7 @@ import { validator } from "../../../utils/validator";
 import Input from "../../UI/Input/Input";
 import classes from "./NewStickyNote.module.css";
 import ActionButton from "../../UI/Buttons/ActionButton";
+import TextInput from "../../UI/Input/TextInput";
 import StickyContext from "../../../store/StickyContext";
 
 function NewStickyNote({ toggle, title, id, text, color }) {
@@ -65,7 +66,7 @@ function NewStickyNote({ toggle, title, id, text, color }) {
           hasError={enteredTitle.hasError}
         />
 
-        <Input
+        <TextInput
           name="description"
           type="text"
           errorText="Title should note be empty"

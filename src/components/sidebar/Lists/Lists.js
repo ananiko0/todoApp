@@ -8,7 +8,7 @@ import classes from "./Lists.module.css";
 import NewList from "./NewList";
 import ListContext from "../../../store/ListContext";
 
-function Lists(props) {
+function Lists({ close }) {
   //get context and navigation
   const navigate = useNavigate();
   const { addList, lists } = useContext(ListContext);
@@ -31,6 +31,13 @@ function Lists(props) {
     navigate(path);
   };
 
+  //close side bar on mobile
+  const clickHandler = () => {
+    if (window.innerWidth < 885) {
+      close();
+    } else return;
+  };
+
   //render lists
   const list = lists.map((item) => (
     <ListItem
@@ -38,6 +45,7 @@ function Lists(props) {
       icon={item.icon}
       path={item.path}
       key={item.id}
+      onClick={clickHandler}
     />
   ));
   return (

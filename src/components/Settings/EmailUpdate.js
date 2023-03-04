@@ -8,7 +8,11 @@ function EmailUpdate(props) {
   return (
     <form className={classes.form}>
       <h4>Update Email</h4>
-      <Input name="Update Email" value="exampel@gmail.com" />
+      <Input
+        name="Update Email"
+        value="exampel@gmail.com"
+        onChange={() => {}}
+      />
       <ActionButton type="submit" text="Save Changes" />
     </form>
   );
