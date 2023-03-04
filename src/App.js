@@ -17,6 +17,8 @@ import WelcomeText from "./components/welcome/WelcomeText";
 import List from "./pages/List";
 
 import "./App.css";
+import Completed from "./pages/Completed";
+import Trash from "./pages/Trash";
 
 function App() {
   //get location and login context
@@ -55,6 +57,8 @@ function App() {
               <Route element={<Settings />} path="settings" />
               <Route element={<Upcoming />} path="upcoming" />
               <Route element={<List />} path="lists/:listName" />
+              <Route element={<Completed />} path="completed" />
+              <Route element={<Trash />} path="trash" />
             </Route>
           </Routes>
         </main>

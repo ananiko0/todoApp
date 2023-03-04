@@ -17,12 +17,21 @@ function Upcoming(props) {
   const { boolean, toggleHandler } = useSlider(false);
   const { tasks } = useContext(TasksContext);
 
+  //filter tasks that are completed or trashed
+  const tasksUncompleted = tasks
+    .filter((task) => !task.completed)
+    .filter((task) => !task.trashed);
+
   //filter according to date (today, tommorow and this week)
-  const todayTasks = tasks.filter((task) => filterToday(task.date));
+  const todayTasks = tasksUncompleted.filter((task) => filterToday(task.date));
 
-  const tomorrowTasks = tasks.filter((task) => filterTomorrow(task.date));
+  const tomorrowTasks = tasksUncompleted.filter((task) =>
+    filterTomorrow(task.date)
+  );
 
-  const thisWeekTasks = tasks.filter((task) => filterWeek(task.date));
+  const thisWeekTasks = tasksUncompleted.filter((task) =>
+    filterWeek(task.date)
+  );
 
   //render tasks by date
   const todayTasksRendered = todayTasks.map((item) => (

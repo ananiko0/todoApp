@@ -4,6 +4,7 @@ import {
   HiOutlineCalendarDays,
   HiPaperClip,
 } from "react-icons/hi2";
+import { BiSelectMultiple } from "react-icons/bi";
 
 const taskInfo = [
   {
@@ -25,6 +26,11 @@ const taskInfo = [
     icon: <HiPaperClip style={{ color: "black" }} />,
     name: "Sticky Wall",
     path: "/me/sticky-wall",
+  },
+  {
+    icon: <BiSelectMultiple style={{ color: "black" }} />,
+    name: "Completed",
+    path: "/me/completed",
   },
 ];
 

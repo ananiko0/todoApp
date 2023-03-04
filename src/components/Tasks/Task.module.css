@@ -40,6 +40,14 @@
   cursor: pointer;
 }
 
+.labelCompleted {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
 .container input {
   display: flex;
   align-items: center;
@@ -63,6 +71,16 @@
   opacity: 0;
 }
 
+.icons {
+  display: flex;
+  gap: 30px;
+}
+
+.description {
+  margin-left: 40px;
+  font-size: 15px;
+  color: var(--text-color-600);
+}
 /* .container input:hover {
   background-color: #c5c5c5;
 } */

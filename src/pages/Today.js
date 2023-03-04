@@ -12,8 +12,15 @@ function Today(props) {
   const { boolean, toggleHandler } = useSlider(false);
   const { tasks } = useContext(TasksContext);
 
+  //filter tasks that are completed
+  const tasksUncompleted = tasks
+    .filter((task) => !task.completed)
+    .filter((task) => !task.trashed);
+
   //filter tasks by date
-  const tasksFiltered = tasks.filter((task) => filterToday(task.date));
+  const tasksFiltered = tasksUncompleted.filter((task) =>
+    filterToday(task.date)
+  );
 
   //render tasks
   const tasksRendered = tasksFiltered.map((item) => (

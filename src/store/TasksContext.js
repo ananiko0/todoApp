@@ -7,6 +7,10 @@ const TasksContext = React.createContext({
   addTask: () => {},
   removeTask: () => {},
   editTask: () => {},
+  completeTask: () => {},
+  uncompleteTask: () => {},
+  removePermanently: () => {},
+  restoreTask: () => {},
 });
 
 export const TasksContextProvider = (props) => {
@@ -18,6 +22,14 @@ export const TasksContextProvider = (props) => {
   };
 
   const removeTask = (id) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((item) => item.id === id);
+      prev[index].trashed = true;
+      return prev;
+    });
+  };
+
+  const removePermanently = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   };
 
@@ -29,11 +41,39 @@ export const TasksContextProvider = (props) => {
     });
   };
 
+  const completeTask = (id) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((item) => item.id === id);
+      prev[index].completed = true;
+      return prev;
+    });
+  };
+
+  const uncompleteTask = (id) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((item) => item.id === id);
+      prev[index].completed = false;
+      return prev;
+    });
+  };
+
+  const restoreTask = (id) => {
+    setTasks((prev) => {
+      const index = prev.findIndex((item) => item.id === id);
+      prev[index].trashed = false;
+      return prev;
+    });
+  };
+
   const contextValue = {
     tasks,
     addTask,
     removeTask,
     editTask,
+    completeTask,
+    uncompleteTask,
+    removePermanently,
+    restoreTask,
   };
   return (
     <TasksContext.Provider value={contextValue}>

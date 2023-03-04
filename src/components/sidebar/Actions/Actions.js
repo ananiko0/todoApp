@@ -3,6 +3,7 @@ import {
   HiAdjustmentsHorizontal,
   HiOutlineArrowRightOnRectangle,
 } from "react-icons/hi2";
+import { AiOutlineDelete } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../store/AuthContext";
 import classes from "../../UI/LinkListItem/ListItem.module.css";
@@ -33,6 +34,12 @@ function Actions({ close }) {
         text="Settings"
         icon={<HiAdjustmentsHorizontal />}
         path="/me/settings"
+        onClick={clickHandler}
+      />
+      <ListItem
+        text="Trash"
+        icon={<AiOutlineDelete color="grey" />}
+        path="/me/trash"
         onClick={clickHandler}
       />
 

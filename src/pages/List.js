@@ -14,8 +14,15 @@ function List(props) {
   let { listName } = useParams();
   const { tasks } = useContext(TasksContext);
 
+  //filter tasks that are completed or trashed
+  const tasksUncompleted = tasks
+    .filter((task) => !task.completed)
+    .filter((task) => !task.trashed);
+
   //filter task by listname
-  const tasksFiltered = tasks.filter((task) => task.list === listName);
+  const tasksFiltered = tasksUncompleted.filter(
+    (task) => task.list === listName
+  );
 
   //render tasks
   const tasksRendered = tasksFiltered.map((item) => (

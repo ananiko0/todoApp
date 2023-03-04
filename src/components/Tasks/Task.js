@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
-import { AiFillEdit } from "react-icons/ai";
-import { BsCalendar2XFill, BsFillSquareFill } from "react-icons/bs";
+import React, { useContext, useEffect, useState } from "react";
+import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import { HiCalendarDays, HiArrowUturnLeft } from "react-icons/hi2";
+import { BsFillSquareFill } from "react-icons/bs";
 import ActionButton from "../UI/Buttons/ActionButton";
 import useSlider from "../../hooks/useSlider";
 import classes from "./Task.module.css";
 import TaskSlider from "./TaskSlider";
 import ListContext from "../../store/ListContext";
+import TasksContext from "../../store/TasksContext";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 function Task({
   name,
@@ -15,12 +18,25 @@ function Task({
   listName,
   text,
   ListNameNotVisible,
+  completed,
+  trashed,
 }) {
   //set slider state
   const { boolean, toggleHandler } = useSlider(false);
 
-  //get list context
+  //get location and navigation for rerendering page after task is completed
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  //get list and task contexts
   const { lists } = useContext(ListContext);
+  const {
+    removeTask,
+    completeTask,
+    uncompleteTask,
+    removePermanently,
+    restoreTask,
+  } = useContext(TasksContext);
 
   //check if date and list name is available
   const dateIsAvailable = !!date;
@@ -36,7 +52,7 @@ function Task({
   //render date
   const dateInfo = dateIsAvailable ? (
     <div className={classes.dateContainer}>
-      <BsCalendar2XFill color="grey" />
+      <HiCalendarDays color="grey" />
       {date}
     </div>
   ) : (
@@ -64,21 +80,76 @@ function Task({
     </div>
   );
 
+  //delete task funciton
+  const deleteTaskHandler = () => {
+    if (trashed || completed) {
+      setTimeout(() => {
+        removePermanently(id);
+        navigate(location.pathname);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        removeTask(id);
+        navigate(location.pathname);
+      }, 500);
+    }
+  };
+
+  //complete task
+  const compleTaskHandler = () => {
+    setTimeout(() => {
+      completeTask(id);
+      navigate(location.pathname);
+    }, 500);
+  };
+
+  //uncomplete task
+  const undoHandler = () => {
+    if (completed) {
+      setTimeout(() => {
+        uncompleteTask(id);
+        navigate(location.pathname);
+      }, 500);
+    } else if (trashed) {
+      setTimeout(() => {
+        restoreTask(id);
+        navigate(location.pathname);
+      }, 500);
+    }
+  };
+
+  console.log("rerendered");
   return (
     <div className={classes.outerContainer}>
       <div className={classes.innerContainer}>
-        <label className={classes.label}>
-          <input type="checkbox" />
+        <label
+          className={
+            completed || trashed ? classes.labelCompleted : classes.label
+          }
+        >
+          {!completed && !trashed && (
+            <input type="checkbox" onChange={compleTaskHandler} />
+          )}
 
           {name}
           <span className={classes.checkMark} />
         </label>
 
-        <ActionButton
-          type="edit"
-          text={<AiFillEdit />}
-          clickHandler={toggleHandler}
-        />
+        <div className={classes.icons}>
+          <ActionButton
+            type="edit"
+            text={
+              completed || trashed ? <HiArrowUturnLeft /> : <AiOutlineEdit />
+            }
+            clickHandler={completed || trashed ? undoHandler : toggleHandler}
+          />
+
+          <ActionButton
+            type="edit"
+            text={<AiOutlineDelete />}
+            clickHandler={deleteTaskHandler}
+          />
+        </div>
 
         <TaskSlider
           title={name}
@@ -91,6 +162,8 @@ function Task({
           dateValue={dateValue}
         />
       </div>
+
+      <div className={classes.description}>{text}</div>
       {infoContainer}
     </div>
   );
