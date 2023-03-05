@@ -4,9 +4,15 @@ import {
   HiOutlineCalendarDays,
   HiPaperClip,
 } from "react-icons/hi2";
+import { FaTasks } from "react-icons/fa";
 import { BiSelectMultiple } from "react-icons/bi";
 
 const taskInfo = [
+  {
+    icon: <FaTasks style={{ color: "black" }} />,
+    name: "All Tasks",
+    path: "/me/all-tasks",
+  },
   {
     icon: <HiOutlineChevronDoubleRight style={{ color: "black" }} />,
     name: "Upcoming",

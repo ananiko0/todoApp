@@ -19,6 +19,7 @@ import List from "./pages/List";
 import "./App.css";
 import Completed from "./pages/Completed";
 import Trash from "./pages/Trash";
+import AllTasks from "./pages/AllTasks";
 
 function App() {
   //get location and login context
@@ -59,6 +60,7 @@ function App() {
               <Route element={<List />} path="lists/:listName" />
               <Route element={<Completed />} path="completed" />
               <Route element={<Trash />} path="trash" />
+              <Route element={<AllTasks />} path="all-tasks" />
             </Route>
           </Routes>
         </main>

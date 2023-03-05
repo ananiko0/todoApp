@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { HiCalendarDays, HiArrowUturnLeft } from "react-icons/hi2";
 import { BsFillSquareFill } from "react-icons/bs";
@@ -8,7 +8,7 @@ import classes from "./Task.module.css";
 import TaskSlider from "./TaskSlider";
 import ListContext from "../../store/ListContext";
 import TasksContext from "../../store/TasksContext";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Task({
   name,
@@ -118,7 +118,6 @@ function Task({
     }
   };
 
-  console.log("rerendered");
   return (
     <div className={classes.outerContainer}>
       <div className={classes.innerContainer}>

@@ -1,13 +1,12 @@
-import React, { Fragment, useContext } from "react";
-import { GrChapterAdd } from "react-icons/gr";
+import React, { useContext } from "react";
 
-import ActionButton from "../UI/Buttons/ActionButton";
+import MainContainer from "../UI/Container/MainContainer";
 import useSlider from "../../hooks/useSlider";
 // import StickyNoteInfo from "./StickyNoteInfo";
 import StickyNote from "./StickyNote/StickyNote";
-import classes from "./Sticky.module.css";
 import StickyNoteSlider from "./NewStickyNote/StickySlider";
 import StickyContext from "../../store/StickyContext";
+import classes from "./Sticky.module.css";
 
 function Sticky(props) {
   //get contexts and set slider state
@@ -26,21 +25,18 @@ function Sticky(props) {
   ));
 
   return (
-    <Fragment>
-      <div className={classes.titleContainer}>
-        <h2>Sticky Wall</h2>
-
-        <ActionButton
-          text={<GrChapterAdd />}
-          type="edit"
-          clickHandler={toggleHandler}
-        />
-
-        <StickyNoteSlider toggleHandler={toggleHandler} boolean={boolean} />
-      </div>
-
-      <div className={classes.container}>{stickyNotesDisplay}</div>
-    </Fragment>
+    <div>
+      <MainContainer
+        title="Sticky Wall"
+        slider={
+          <StickyNoteSlider boolean={boolean} toggleHandler={toggleHandler} />
+        }
+        boolean={boolean}
+        toggleHandler={toggleHandler}
+      >
+        <div className={classes.container}>{stickyNotesDisplay}</div>
+      </MainContainer>
+    </div>
   );
 }
 

@@ -6,11 +6,15 @@
   font-size: 22px;
   background-color: var(--background-color-500);
   border-bottom: 0.1px solid var(--border-color-300);
+  z-index: 99;
 }
 
 @media (min-width: 885px) {
   .button {
-    position: relative;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 48px;
+    max-height: 50px;
     width: auto;
     margin: 40px;
     padding: 0;

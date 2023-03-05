@@ -35,6 +35,9 @@
     max-width: 270px;
     margin: 20px;
     border-radius: 10px;
-    position: relative;
+    max-height: 95vh;
+    position: sticky;
+    top: 30px;
+    position: -webkit-sticky;
   }
 }
