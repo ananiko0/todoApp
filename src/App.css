@@ -18,7 +18,7 @@ main {
   .App {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
   }
 }
 
@@ -26,6 +26,6 @@ main {
   main {
     margin: 0 20px 20px 20px;
     padding-top: 0;
-    flex-grow: 0.95;
+    width: 100%;
   }
 }

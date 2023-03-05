@@ -10,10 +10,9 @@ function MainContainer({
   slider,
   title,
   toggleHandler,
-  boolean,
-  settings,
+  buttonNotVisible,
 }) {
-  const actionButton = !settings && (
+  const actionButton = !buttonNotVisible && (
     <ActionButton
       text={<GrChapterAdd />}
       type="edit"

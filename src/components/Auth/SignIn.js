@@ -21,7 +21,7 @@ function SignIn(props) {
     <div className={classes.container}>
       <h1>Sign In</h1>
 
-      <form onSubmit={formSubmitHandler}>
+      <form onSubmit={formSubmitHandler} className={classes.form}>
         <Input name="email" auth={true} type="email" />
         <Input name="password" auth={true} type="password" />
         <ActionButton type="submit" text="sign in" />

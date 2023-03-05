@@ -27,7 +27,9 @@ function Trash(props) {
   ));
   return (
     <div>
-      <MainContainer title="Completed">{tasksRendered}</MainContainer>
+      <MainContainer title="Trash" buttonNotVisible={true}>
+        {tasksRendered}
+      </MainContainer>
     </div>
   );
 }

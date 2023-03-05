@@ -6,7 +6,7 @@ import PasswordUpdate from "../components/Settings/PasswordUpdate";
 
 function Settings(props) {
   return (
-    <MainContainer title="Settings" settings={true}>
+    <MainContainer title="Settings" buttonNotVisible={true}>
       <EmailUpdate />
       <PasswordUpdate />
     </MainContainer>

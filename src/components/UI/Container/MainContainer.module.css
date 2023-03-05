@@ -21,6 +21,16 @@
   background-color: var(--background-color-500);
 }
 
+.titleContainer div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titleContainer svg {
+  margin-top: 5px;
+}
+
 @media (min-width: 885px) {
   .titleContainer {
     padding-top: 30px;

@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  flex: 1;
   border-radius: 8px;
   border: 1px solid var(--border-color-300);
   display: flex;
@@ -7,6 +7,10 @@
   justify-content: center;
   align-items: stretch;
   padding: 80px;
+}
+
+.form {
+  width: 100%;
 }
 
 .paragraph {
