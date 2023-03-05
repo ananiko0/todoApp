@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { act } from "react-dom/test-utils";
 import { GrChapterAdd } from "react-icons/gr";
 
 import ActionButton from "../Buttons/ActionButton";
