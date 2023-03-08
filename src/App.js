@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Route, Routes, useLocation, Navigate, Outlet } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 import { SliderContextProvider } from "./store/SliderContext";
 import AuthContext from "./store/AuthContext";

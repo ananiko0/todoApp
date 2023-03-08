@@ -3,6 +3,9 @@ import useBoolean from "../hooks/useBoolean";
 
 const SliderContext = React.createContext({
   sliderOpen: false,
+  onOpen: () => {},
+  onClose: () => {},
+  onToggle: () => {},
 });
 
 export const SliderContextProvider = (props) => {

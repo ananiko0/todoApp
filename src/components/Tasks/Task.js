@@ -9,6 +9,8 @@ import TaskSlider from "./TaskSlider";
 import ListContext from "../../store/ListContext";
 import TasksContext from "../../store/TasksContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import Toast from "../UI/Toast/Toast";
 
 function Task({
   name,
@@ -81,17 +83,37 @@ function Task({
   );
 
   //delete task funciton
-  const deleteTaskHandler = () => {
+  const deleteTaskHandler = (event) => {
     if (trashed || completed) {
       setTimeout(() => {
-        removePermanently(id);
+        toast(
+          <Toast
+            onAction={() => {
+              removePermanently(id);
+              navigate(location.pathname);
+            }}
+            closeToast={() => {}}
+            text="Are you sure you want to delete premanently?"
+            buttonText="Yes"
+          />
+        );
+
         navigate(location.pathname);
       }, 500);
     } else {
-      setTimeout(() => {
-        removeTask(id);
-        navigate(location.pathname);
-      }, 500);
+      removeTask(id);
+      navigate(location.pathname);
+      toast(
+        <Toast
+          onAction={() => {
+            restoreTask(id);
+            navigate(location.pathname);
+          }}
+          closeToast={() => {}}
+          text="Item moved to bin"
+          buttonText="Undo"
+        />
+      );
     }
   };
 
@@ -101,6 +123,17 @@ function Task({
       completeTask(id);
       navigate(location.pathname);
     }, 500);
+    toast(
+      <Toast
+        onAction={() => {
+          uncompleteTask(id);
+          navigate(location.pathname);
+        }}
+        closeToast={() => {}}
+        text="Task Marked as completed"
+        buttonText="Undo"
+      />
+    );
   };
 
   //uncomplete task
@@ -116,6 +149,7 @@ function Task({
         navigate(location.pathname);
       }, 500);
     }
+    toast("taks restored");
   };
 
   return (

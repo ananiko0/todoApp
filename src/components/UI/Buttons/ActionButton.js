@@ -16,7 +16,7 @@ function ActionButton({ text, clickHandler, type, disabled }) {
   if (type === "edit") {
     paragraphStyle.fontSize = "22px";
     style.borderColor = "transparent";
-    style.width = "1px";
+    // style.width = "1px";
     style.padding = "0";
     style.marginTop = "20px";
   }

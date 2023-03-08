@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import taskInfo from "./taskInfo";
 import ListItem from "../../UI/LinkListItem/ListItem";
+import SliderContext from "../../../store/SliderContext";
 import classes from "./Tasks.module.css";
 
 function Tasks({ close }) {
+  //get context of editing mode
+  const { onClose } = useContext(SliderContext);
+
   //close side bar on mobile
   const clickHandler = () => {
+    onClose();
     if (window.innerWidth < 885) {
       close();
     } else return;

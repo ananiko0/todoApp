@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 import ColorInputs from "../../UI/Input/ColorInputs";
 import useInput from "../../../hooks/useInput";
@@ -42,6 +43,7 @@ function NewStickyNote({ toggle, title, id, text, color }) {
     } else {
       stickyCtx.addNote(data);
     }
+    toast("Changes Saved");
 
     //maybe later add close function in useSlider and use it instead of toggle
     toggle();
@@ -50,6 +52,7 @@ function NewStickyNote({ toggle, title, id, text, color }) {
   const deleteHandler = (event) => {
     event.preventDefault();
     stickyCtx.removeNote(id);
+    toast("Note Deleted");
     toggle();
   };
 

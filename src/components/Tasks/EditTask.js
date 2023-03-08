@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
+import Toast from "../UI/Toast/Toast";
 import useInput from "../../hooks/useInput";
 import Input from "../UI/Input/Input";
 import DateInput from "../UI/Input/DateInput";
@@ -9,10 +11,13 @@ import TextInput from "../UI/Input/TextInput";
 import { validator } from "../../utils/validator";
 import TasksContext from "../../store/TasksContext";
 import classes from "./EditTask.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function EditTask({ toggle, title, text, id, dateValue, listName }) {
   //get task context
   const taskCtx = useContext(TasksContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   //get input
   const enteredTitle = useInput(validator, title);
@@ -44,6 +49,9 @@ function EditTask({ toggle, title, text, id, dateValue, listName }) {
       taskCtx.addTask(data);
     }
 
+    //show toast message
+    toast("Changes Saved");
+
     //close editor
     toggle();
   };
@@ -52,6 +60,18 @@ function EditTask({ toggle, title, text, id, dateValue, listName }) {
   const deleteHandler = (event) => {
     event.preventDefault();
     taskCtx.removeTask(id);
+
+    toast(
+      <Toast
+        onAction={() => {
+          taskCtx.restoreTask(id);
+          navigate(location.pathname);
+        }}
+        closeToast={() => {}}
+        text="Item moved to bin"
+        buttonText="Undo"
+      />
+    );
 
     //close editor
     toggle();

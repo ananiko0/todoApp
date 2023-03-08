@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import { WiMoonFull } from "react-icons/wi";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +20,6 @@ function List(props) {
   //get color of the lsit
   const color = lists.filter((list) => list.name.toLowerCase() === listName)[0]
     .color;
-  console.log(color);
 
   //filter tasks that are completed or trashed
   const tasksUncompleted = tasks
