@@ -77,6 +77,9 @@ function Upcoming(props) {
         slider={<TaskSlider boolean={boolean} toggleHandler={toggleHandler} />}
         boolean={boolean}
         toggleHandler={toggleHandler}
+        hasContent={
+          todayTasks.length + tomorrowTasks.length + thisWeekTasks.length
+        }
       >
         <UpcomingContainer title="Today">
           {todayTasksRendered}

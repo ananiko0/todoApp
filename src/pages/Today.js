@@ -43,6 +43,7 @@ function Today(props) {
         slider={<TaskSlider boolean={boolean} toggleHandler={toggleHandler} />}
         boolean={boolean}
         toggleHandler={toggleHandler}
+        hasContent={tasksFiltered.length}
       >
         {tasksRendered}
       </MainContainer>

@@ -27,7 +27,11 @@ function Completed(props) {
   ));
   return (
     <div>
-      <MainContainer title="Completed" buttonNotVisible={true}>
+      <MainContainer
+        title="Completed"
+        buttonNotVisible={true}
+        hasContent={tasksCompleted.length}
+      >
         {tasksRendered}
       </MainContainer>
     </div>

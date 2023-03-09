@@ -12,6 +12,7 @@ function MainContainer({
   title,
   toggleHandler,
   buttonNotVisible,
+  hasContent,
 }) {
   const actionButton = !buttonNotVisible && (
     <ActionButton
@@ -20,6 +21,7 @@ function MainContainer({
       clickHandler={toggleHandler}
     />
   );
+
   return (
     <Fragment>
       <div className={classes.titleContainer}>
@@ -27,7 +29,10 @@ function MainContainer({
         {actionButton}
         {slider}
       </div>
-      <div className={classes.container}>{children}</div>
+      <div className={classes.container}>
+        {children}
+        {!hasContent && <div>list is empty</div>}
+      </div>
       {ReactDOM.createPortal(
         <ToastContainer closeOnClick={false} closeButton={false} />,
         document.getElementById("root")

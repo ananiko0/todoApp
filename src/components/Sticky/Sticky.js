@@ -33,6 +33,7 @@ function Sticky(props) {
         }
         boolean={boolean}
         toggleHandler={toggleHandler}
+        hasContent={stickyNotes.length}
       >
         <div className={classes.container}>{stickyNotesDisplay}</div>
       </MainContainer>

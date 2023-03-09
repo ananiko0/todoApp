@@ -41,6 +41,7 @@ function AllTasks(props) {
         slider={<TaskSlider boolean={boolean} toggleHandler={toggleHandler} />}
         boolean={boolean}
         toggleHandler={toggleHandler}
+        hasContent={tasks.length}
       >
         {tasksRendered}
       </MainContainer>

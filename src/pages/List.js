@@ -77,6 +77,7 @@ function List(props) {
         slider={<TaskSlider boolean={boolean} toggleHandler={toggleHandler} />}
         boolean={boolean}
         toggleHandler={toggleHandler}
+        hasContent={tasksFiltered.length}
       >
         {showColorInput.boolean && (
           <ColorInputs onChange={changeColorHandler} value={chosenColor} />

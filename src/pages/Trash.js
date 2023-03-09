@@ -9,9 +9,9 @@ function Trash(props) {
   const { tasks } = useContext(TasksContext);
 
   //filter tasks that are completed
-  const tasksCompleted = tasks.filter((task) => task.trashed);
+  const tasksTrashed = tasks.filter((task) => task.trashed);
 
-  const tasksRendered = tasksCompleted.map((item) => (
+  const tasksRendered = tasksTrashed.map((item) => (
     <Task
       name={item.title}
       id={item.id}
@@ -27,7 +27,11 @@ function Trash(props) {
   ));
   return (
     <div>
-      <MainContainer title="Trash" buttonNotVisible={true}>
+      <MainContainer
+        title="Trash"
+        buttonNotVisible={true}
+        hasContent={tasksTrashed.length}
+      >
         {tasksRendered}
       </MainContainer>
     </div>
