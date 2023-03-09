@@ -80,7 +80,7 @@ function NewStickyNote({ toggle, title, id, text, color }) {
         />
 
         <h6>Choose Color:</h6>
-        <ColorInputs onChange={changeColorHandler} />
+        <ColorInputs onChange={changeColorHandler} value={chosenColor} />
       </div>
       <div className={classes.buttonContainer}>
         <ActionButton text="Delete Note" clickHandler={deleteHandler} />

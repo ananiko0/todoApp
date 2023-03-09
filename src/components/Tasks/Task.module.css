@@ -73,17 +73,15 @@
 
 .icons {
   display: flex;
-  gap: 30px;
+  gap: 10px;
 }
 
 .description {
   margin-left: 40px;
+  margin-right: 50px;
   font-size: 15px;
   color: var(--text-color-600);
 }
-/* .container input:hover {
-  background-color: #c5c5c5;
-} */
 
 .container input:checked {
   background-color: rgb(89, 181, 181);
@@ -103,5 +101,11 @@
   .istnameContainer {
     padding-left: 10px;
     border-left: 1px solid var(--border-color-300);
+  }
+}
+
+@media (min-width: 504px) {
+  .icons {
+    gap: 30px;
   }
 }

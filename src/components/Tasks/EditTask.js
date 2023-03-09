@@ -10,6 +10,10 @@ import ListInput from "../UI/Input/ListInput";
 import TextInput from "../UI/Input/TextInput";
 import { validator } from "../../utils/validator";
 import TasksContext from "../../store/TasksContext";
+import {
+  getDefaultDateValue,
+  getDefaultListValue,
+} from "../../utils/HelperFunctions";
 import classes from "./EditTask.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -19,11 +23,15 @@ function EditTask({ toggle, title, text, id, dateValue, listName }) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  //get default date or location according to the page
+  const date = getDefaultDateValue(location.pathname);
+  const list = getDefaultListValue(location.pathname);
+
   //get input
   const enteredTitle = useInput(validator, title);
   const enteredDescription = useInput(validator, text);
-  const enteredDate = useInput(() => {}, dateValue);
-  const enteredListName = useInput(validator, listName);
+  const enteredDate = useInput(() => {}, dateValue || date);
+  const enteredListName = useInput(validator, listName || list);
 
   //check form validity
   const formIsValid = enteredTitle.isValid;
