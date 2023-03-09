@@ -5,7 +5,6 @@ import colors from "../../../utils/colors";
 import classes from "./ColorInputs.module.css";
 
 function ColorInputs({ onChange, value }) {
-  console.log(value);
   const colorsDisplay = colors.map((item) => {
     const checked = value === item.code;
     return (

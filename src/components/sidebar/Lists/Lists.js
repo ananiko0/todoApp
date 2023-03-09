@@ -42,7 +42,7 @@ function Lists({ close }) {
   const list = lists.map((item) => (
     <ListItem
       text={item.name}
-      icon={item.icon}
+      icon={<WiMoonFull color={item.color} />}
       path={item.path}
       key={item.id}
       onClick={clickHandler}

@@ -1,7 +1,6 @@
-import { WiMoonFull } from "react-icons/wi";
 import Randomstring from "randomstring";
 
-const listInfoDefault = [
+const listInfoInitial = [
   {
     // icon: <WiMoonFull style={{ color:  }} />,
     name: "Personal",
@@ -24,9 +23,5 @@ const listInfoDefault = [
     id: Randomstring.generate(),
   },
 ];
-
-const listInfoInitial = listInfoDefault.map((item) =>
-  Object.assign(item, { icon: <WiMoonFull style={{ color: item.color }} /> })
-);
 
 export default listInfoInitial;

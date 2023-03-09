@@ -6,6 +6,7 @@ const ListContext = React.createContext({
   lists: [],
   addList: () => {},
   removeList: () => {},
+  updateColor: () => {},
 });
 
 export const ListContextProvider = (props) => {
@@ -18,10 +19,19 @@ export const ListContextProvider = (props) => {
     setLists((prev) => prev.filter((listName) => listName.id !== id));
   };
 
+  const updateColor = (color, name) => {
+    setLists((prev) => {
+      const index = prev.findIndex((item) => item.name.toLowerCase() === name);
+      prev[index].color = color;
+      return prev;
+    });
+  };
+
   const value = {
     lists,
     addList,
     removeList,
+    updateColor,
   };
   return (
     <ListContext.Provider value={value}>{props.children}</ListContext.Provider>
