@@ -6,7 +6,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  padding: 80px;
+  padding: 50px;
+  margin-bottom: 20px;
 }
 
 .form {
@@ -24,5 +25,7 @@
 @media (min-width: 885px) {
   .container {
     height: 74vh;
+    padding: 80px;
+    margin-bottom: 0;
   }
 }

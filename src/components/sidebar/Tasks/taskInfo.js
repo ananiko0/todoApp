@@ -23,11 +23,11 @@ const taskInfo = [
     name: "Today",
     path: "/me/today",
   },
-  {
-    icon: <HiOutlineCalendarDays style={{ color: "black" }} />,
-    name: "Calendar",
-    path: "/me/calendar",
-  },
+  // {
+  //   icon: <HiOutlineCalendarDays style={{ color: "black" }} />,
+  //   name: "Calendar",
+  //   path: "/me/calendar",
+  // },
   {
     icon: <HiPaperClip style={{ color: "black" }} />,
     name: "Sticky Wall",

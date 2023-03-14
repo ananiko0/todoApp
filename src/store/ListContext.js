@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import listInfoInitial from "../utils/lists/listsList";
+import TasksContext from "./TasksContext";
 
 const ListContext = React.createContext({
   lists: [],
@@ -11,12 +12,16 @@ const ListContext = React.createContext({
 
 export const ListContextProvider = (props) => {
   const [lists, setLists] = useState(listInfoInitial);
+  const { deleteTasksByListName } = useContext(TasksContext);
 
   const addList = (newList) => {
     setLists((prev) => [...prev, newList]);
   };
-  const removeList = (id) => {
-    setLists((prev) => prev.filter((listName) => listName.id !== id));
+  const removeList = (name) => {
+    setLists((prev) =>
+      prev.filter((listName) => listName.name.toLowerCase() !== name)
+    );
+    deleteTasksByListName(name);
   };
 
   const updateColor = (color, name) => {

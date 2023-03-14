@@ -17,6 +17,7 @@ function Actions({ close }) {
 
   //logout hanlder
   const signOutHandler = () => {
+    close();
     logout();
     navigate("/welcome");
   };

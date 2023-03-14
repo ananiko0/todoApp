@@ -34,7 +34,11 @@ function MainContainer({
         {!hasContent && <div>list is empty</div>}
       </div>
       {ReactDOM.createPortal(
-        <ToastContainer closeOnClick={false} closeButton={false} />,
+        <ToastContainer
+          closeOnClick={false}
+          closeButton={false}
+          autoClose={2500}
+        />,
         document.getElementById("root")
       )}
     </Fragment>

@@ -11,6 +11,7 @@ const TasksContext = React.createContext({
   uncompleteTask: () => {},
   removePermanently: () => {},
   restoreTask: () => {},
+  deleteTasksByListName: () => {},
 });
 
 export const TasksContextProvider = (props) => {
@@ -65,6 +66,11 @@ export const TasksContextProvider = (props) => {
     });
   };
 
+  const deleteTasksByListName = (name) => {
+    setTasks((prev) => prev.filter((item) => item.list !== name));
+    console.log("from task context");
+  };
+
   const contextValue = {
     tasks,
     addTask,
@@ -74,6 +80,7 @@ export const TasksContextProvider = (props) => {
     uncompleteTask,
     removePermanently,
     restoreTask,
+    deleteTasksByListName,
   };
   return (
     <TasksContext.Provider value={contextValue}>

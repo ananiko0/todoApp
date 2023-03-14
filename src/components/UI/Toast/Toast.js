@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./Toast.module.css";
 
 function Toast({ onAction, closeToast, text, buttonText }) {
   const handleClick = (event) => {
@@ -8,10 +9,9 @@ function Toast({ onAction, closeToast, text, buttonText }) {
   };
 
   return (
-    <div>
-      <h3>
-        {text} <button onClick={handleClick}>{buttonText}</button>
-      </h3>
+    <div className={classes.container}>
+      <h3>{text}</h3>
+      <button onClick={handleClick}>{buttonText}</button>
     </div>
   );
 }

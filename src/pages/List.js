@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { WiMoonFull } from "react-icons/wi";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Toast from "../components/UI/Toast/Toast";
 
 import TasksContext from "../store/TasksContext";
 import { displayDate } from "../utils/DateFunctions";
@@ -11,14 +13,15 @@ import TaskSlider from "../components/Tasks/TaskSlider";
 import useSlider from "../hooks/useSlider";
 import ListContext from "../store/ListContext";
 import useBoolean from "../hooks/useBoolean";
+import ActionButton from "../components/UI/Buttons/ActionButton";
 
 function List(props) {
   //get task context, params and set state
   const showColorInput = useBoolean(false);
   const { boolean, toggleHandler } = useSlider(false);
   let { listName } = useParams();
-  const { tasks } = useContext(TasksContext);
-  const { lists, updateColor } = useContext(ListContext);
+  const { tasks, deleteTasksByListName } = useContext(TasksContext);
+  const { lists, updateColor, removeList } = useContext(ListContext);
 
   //get location and navigation for reloading when color is changed
   const navigate = useNavigate();
@@ -66,6 +69,21 @@ function List(props) {
     />
   ));
 
+  const deleteListHandler = () => {
+    toast(
+      <Toast
+        onAction={() => {
+          removeList(listName);
+          deleteTasksByListName(listName);
+          navigate("/me/today");
+        }}
+        closeToast={() => {}}
+        text="Are you sure you want to delete premanently?"
+        buttonText="Yes"
+      />
+    );
+  };
+
   return (
     <div>
       <MainContainer
@@ -83,6 +101,12 @@ function List(props) {
           <ColorInputs onChange={changeColorHandler} value={chosenColor} />
         )}
         {tasksRendered}
+
+        <div
+          style={{ marginTop: " 20px", marginBottom: "20px", width: "300px" }}
+        >
+          <ActionButton text="Delete List" clickHandler={deleteListHandler} />
+        </div>
       </MainContainer>
     </div>
   );

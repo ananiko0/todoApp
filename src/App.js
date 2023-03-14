@@ -39,6 +39,7 @@ function App() {
         {isLoggedIn && <SideBar />}
         <main>
           <Routes location={location} key={location.pathname}>
+            <Route element={<Navigate to={"/welcome"} />} path="/*" />
             <Route
               element={protectRoute(!isLoggedIn, <Welcome />, "/me/today")}
               path="/welcome"

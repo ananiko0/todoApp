@@ -2,7 +2,6 @@ import React from "react";
 import { AiFillEdit } from "react-icons/ai";
 
 import StickyNoteSlider from "../NewStickyNote/StickySlider";
-import ActionButton from "../../UI/Buttons/ActionButton";
 import useSlider from "../../../hooks/useSlider";
 import classes from "./StickyNote.module.css";
 
@@ -17,11 +16,9 @@ function StickyNote({ title, text, color, id }) {
         <p>{text}</p>
       </div>
 
-      <ActionButton
-        text={<AiFillEdit />}
-        type="edit"
-        clickHandler={toggleHandler}
-      />
+      <button className={classes.button} onClick={toggleHandler}>
+        <AiFillEdit />
+      </button>
 
       <StickyNoteSlider
         title={title}

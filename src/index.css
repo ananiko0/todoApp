@@ -24,6 +24,7 @@ body {
   --text-color-600: rgb(66, 66, 66);
   --text-color-500: rgba(73, 73, 74, 0.905);
   --border-color-300: rgba(148, 147, 147, 0.182);
+  --toastify-color-progress-light: #ffd43b;
 }
 h2 {
   color: var(--text-color-700);
@@ -81,4 +82,10 @@ textarea {
   font-family: "Kanit", sans-serif;
   font-style: normal;
   color: var(--text-color-500);
+}
+
+.Toastify__progress-bar {
+  color: red;
+  background-color: red;
+  background: red;
 }
